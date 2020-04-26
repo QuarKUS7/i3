@@ -148,8 +148,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -10% #
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 
 ## Switching between workspaces
 bindsym Mod1+Control+n workspace prev
@@ -159,18 +159,16 @@ bindsym Mod1+Control+p workspace next
 exec xautolock -time 11 -locker lock
 bindsym $mod+Ctrl+l exec lock
 
-
-## GRUVBOX THEME
+## Theme
 #
-
+#
 #--------------------------------------------------------------------------
 # Window borders and colors
 #--------------------------------------------------------------------------
 #                        border     bg         fg         indicator  child_border
-client.focused           #3465a4    #3465a4    #e0e0e0    ##d79921    #202332
+client.focused           #383c4a    #3465a4    #e0e0e0    ##d79921    #202332
 client.focused_inactive  #383c4a    #383c4a    #e0e0e0    ##d79921    #202332
 client.unfocused         #383c4a    #383c4a    #808080    ##d79921    #202332
 client.urgent            #383c4a    #900000    #ffffff    ##d79921    #202332
 client.placeholder       #383c4a    #0c0c0c    #ffffff    ##d79921    #202332
 client.background        #202332
-
