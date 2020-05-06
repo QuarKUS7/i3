@@ -3,8 +3,7 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-#font pango:Monospace 11
-font pango:Yosemite San Francisco Font 11
+font pango:Cantarell 11
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -108,10 +107,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -161,16 +160,22 @@ bindsym $mod+Ctrl+l exec lock
 ## network applet
 exec --no-startup-id nm-applet --sm-disable
 
-## Theme
+## cokny htop like feature
+#exec --no-startup-id conky -c ~/.config/conky/conky.conf -b
+
+## fix caps-lock control error
+exec --no-startup-id setxkbmap -option
+
 #
+## Theme
 #
 #--------------------------------------------------------------------------
 # Window borders and colors
 #--------------------------------------------------------------------------
 #                        border     bg         fg         indicator  child_border
-client.focused           #383c4a    #3465a4    #e0e0e0    ##d79921    #202332
-client.focused_inactive  #383c4a    #383c4a    #e0e0e0    ##d79921    #202332
-client.unfocused         #383c4a    #383c4a    #808080    ##d79921    #202332
+client.focused           #383c4a    #2C3133    #e0e0e0    ##d79921    #202332
+client.focused_inactive  #383c4a    #2C3133    #e0e0e0    ##d79921    #202332
+client.unfocused         #383c4a    #2C3133    #808080    ##d79921    #202332
 client.urgent            #383c4a    #900000    #ffffff    ##d79921    #202332
 client.placeholder       #383c4a    #0c0c0c    #ffffff    ##d79921    #202332
 client.background        #202332
