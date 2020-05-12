@@ -153,10 +153,6 @@ bindsym Mod1+Control+p workspace next
 exec xautolock -time 11 -locker lock
 bindsym $mod+Ctrl+l exec lock
 
-## Switching between workspaces with alt+tab
-#bindsym $mod+Tab workspace next 
-#bindsym $mod+Shift+Tab workspace prev
-
 ## network applet
 exec --no-startup-id nm-applet --sm-disable
 
@@ -165,6 +161,24 @@ exec --no-startup-id nm-applet --sm-disable
 
 ## fix caps-lock control error
 exec --no-startup-id setxkbmap -option
+
+set $Locker i3lock && sleep 1
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Escape mode "$mode_system"
 
 #
 ## Theme
