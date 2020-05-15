@@ -1,4 +1,13 @@
 #!/bin/bash
-scrot /tmp/screenshot.png
-convert /tmp/screenshot.png -blur 0x6 /tmp/screenshotblur.png
-i3lock -i /tmp/screenshotblur.png -e
+
+img="/tmp/screenshotblur.png"
+
+# Take screenshor
+scrot $img
+# Blurr it
+convert $img -blur 0x6 $img
+# Lock screen with it
+i3lock -i $img -e
+# Uprac si po sebe!
+rm -f $img
+
