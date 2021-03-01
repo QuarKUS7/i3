@@ -1,0 +1,14 @@
+#!/bin/bash
+# Script na prepinanie profilu sluchatok z off na a2dp_sink a naopak
+
+
+SLUCHATKA_STATUS=$(pacmd list-cards | grep "active profile" | tail -n1 | awk '{print $3;}' | tr -d '<>')
+
+if [ "$SLUCHATKA_STATUS" == "a2dp_sink" ];
+then
+    pactl set-card-profile 1 off
+else
+    pactl set-card-profile 1 a2dp_sink
+fi
+
+exit 0

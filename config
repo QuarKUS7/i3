@@ -6,14 +6,16 @@ set $win Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Cantarell 11
+font pango:Cantarell 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 ## xfce4-terminal
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+#bindsym $mod+Return exec xfce4-terminal
+#bindsym $mod+Return exec termite -e 'TERM=xterm-256color; bash'
+bindsym $mod+Return exec termite -t Terminal
 
 ## Kill as on vim
 # kill focused window
@@ -52,7 +54,7 @@ bindsym $mod+o split h
 bindsym $mod+e split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+#bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -64,9 +66,6 @@ bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -154,7 +153,7 @@ bindsym Mod1+Control+p workspace next
 bindsym $win+l exec lock
 
 
-set $Locker i3lock && sleep 1
+set $Locker i3lock -e -t -i /home/peter/Desktop/rick.png
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
@@ -175,6 +174,12 @@ bindsym $mod+Escape mode "$mode_system"
 ## network applet
 exec --no-startup-id nm-applet --sm-disable
 
+## bluetooth applet
+exec --no-startup-id blueman-applet --sm-disable
+
+## gnome-control-centre
+bindsym $mod+g exec env XDG_CURRENT_DESKTOP=GNOME gnome-control-center
+
 ## fix caps-lock control error
 exec_always --no-startup-id setxkbmap -option
 
@@ -183,6 +188,9 @@ bindsym $mod+x move workspace to output left
 
 # ak je pracovny monitor pripojeny daj ho na pravo, inak reset xrandr na default
 exec_always "if xrandr | grep 'HDMI1 connected'; then xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1; else xrandr -s 0; fi"
+
+# prepinanie profilu sluchatok
+bindsym $mod+a exec --no-startup-id /home/peter/.config/i3/sluchatka
 
 #
 ## Theme
@@ -196,4 +204,4 @@ client.focused_inactive  #383c4a    #2C3133    #e0e0e0    ##d79921    #202332
 client.unfocused         #383c4a    #2C3133    #808080    ##d79921    #202332
 client.urgent            #383c4a    #900000    #ffffff    ##d79921    #202332
 client.placeholder       #383c4a    #0c0c0c    #ffffff    ##d79921    #202332
-client.background        #202332
+
