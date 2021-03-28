@@ -3,12 +3,13 @@
 
 
 SLUCHATKA_STATUS=$(pacmd list-cards | grep "active profile" | tail -n1 | awk '{print $3;}' | tr -d '<>')
+SONY_INDEX=$(pacmd list-cards | grep "WH-1000XM4" -B 5 | head -n1 | awk '{print $2;};')
 
 if [ "$SLUCHATKA_STATUS" == "a2dp_sink" ];
 then
-    pactl set-card-profile 1 off
+    pactl set-card-profile $SONY_INDEX off
 else
-    pactl set-card-profile 1 a2dp_sink
+    pactl set-card-profile $SONY_INDEX a2dp_sink
 fi
 
 exit 0
