@@ -10,4 +10,3 @@ convert $img -blur 0x6 $img
 i3lock -i $img -e
 # Uprac si po sebe!
 rm -f $img
-
